@@ -1,13 +1,13 @@
 resource "aws_vpc" "public-vpc" {
-  cidr_block = "10.0.0.0/24"
-  enable_dns_hostnames = true
-  enable_dns_support = true
+  cidr_block           = local.cidr_block["vpc"] # getting the value of the key "vpc" from the cidr_block map
+  enable_dns_hostnames = local.positive
+  enable_dns_support   = local.positive
 }
 
 resource "aws_subnet" "public-subnet" {
-  vpc_id     = aws_vpc.public-vpc.id
-  cidr_block = "10.0.0.0/28"
-  availability_zone = "eu-west-2c"
+  vpc_id            = aws_vpc.public-vpc.id
+  cidr_block        = local.cidr_block["subnet"] # getting the value of the key "subnet" from the cidr_block map
+  availability_zone = local.azs
 }
 
 resource "aws_internet_gateway" "gw" {
@@ -17,7 +17,7 @@ resource "aws_internet_gateway" "gw" {
 resource "aws_route_table" "default-routes" {
   vpc_id = aws_vpc.public-vpc.id
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = local.general_cidr_block
     gateway_id = aws_internet_gateway.gw.id
   }
 }

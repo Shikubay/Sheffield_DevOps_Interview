@@ -5,7 +5,7 @@ backend "s3" {
     key            = "terraform.tfstate"
     region         = "eu-west-2"
     encrypt        = true
-}  
+  }
   required_version = ">= 1.2.2"
 
   required_providers {
