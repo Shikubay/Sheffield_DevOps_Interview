@@ -1,0 +1,4 @@
+# To-do:
+1. Modularising the configuration files would further simplify them and enhance reusability.
+2. Integrating the configuration into a pipeline would facilitate better collaboration.
+3. Implementing some form of unit testing for security is essential.

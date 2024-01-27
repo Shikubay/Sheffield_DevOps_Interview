@@ -1,1 +1,5 @@
 # tf-deploy
+
+I have employed various best practices, including the Don't Repeat Yourself (DRY) principle, to create well-structured Terraform configurations. The optimal approach here involves creating a Terraform Workspace that utilises the same configuration files for different workspaces. In this setup, we only need to modify the variables, locals, or tfvars files. However, as these changes might not be immediately visible in a repository, I have implemented various techniques such as different blocks, functions, loops, conditional statements, and data types to ensure the configuration files remain DRY.
+
+Additionally, I have configured a backend to use an S3 bucket, enhancing collaboration through both the repository and the statefile stored in S3. I have also added comments to critical sections within the configuration files.
